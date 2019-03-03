@@ -1,0 +1,23 @@
+<head>
+  <meta charset="utf-8">
+</head>
+<div>
+	<form novalidate class="simple-form" name="frmEstado">
+		<div>
+		<input type="text" name="txtUF" ng-model="estado.uf" required ng-minlength="2" ng-maxlength="2" placeholder="digite uma uf" style="text-transform: uppercase;"/>
+		<span ng-show="frmEstado.txtUF.$invalid && frmEstado.txtUF.$touched">Campo UF obrigatório</span>
+		<span ng-show="(frmEstado.txtUFl.$error.minlength || frmEstado.txtUF.$error.maxlength)&& frmEstado.txtUF.$touched">UF 2 Chars</span>
+		
+		</div>
+		
+		<input type="button" value="Salvar" ng-click="salvarEstado()" ng-disabled="frmEstado.$invalid" /> 
+		<input type="button" value="Cancelar" ng-click="cancelarAlteracaoEstado() " ng-disabled="!frmEstado.$invalid" />
+	
+	</form> 
+	<br />
+	<div ng-repeat="est in estados">
+		{{est.id +'|' +est.uf}} 
+		<input type="button" value="excluir" ng-click="removeEstado(est)" />
+			
+	</div>
+</div>
